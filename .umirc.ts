@@ -1,5 +1,4 @@
 import { IConfig } from 'umi-types';
-import Detail from '@/pages/users/detail';
 
 // ref: https://umijs.org/config/
 
@@ -23,7 +22,9 @@ const config: IConfig = {
       'umi-plugin-react',
       {
         antd: true,
-        dva: true,
+        dva: {
+          immer: true
+        },
         dynamicImport: false,
         title: 'umi-js',
         dll: false,
