@@ -16,6 +16,8 @@
     "allowSyntheticDefaultImports": true
   },
   "includes": [
-    "./externals.d.ts"
-  ]
+    "./externals.d.ts",
+    "src/*"
+  ],
+  "exclude": ["node_modules"]
 }
