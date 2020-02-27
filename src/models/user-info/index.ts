@@ -1,5 +1,10 @@
-export type UserState = {
+export type UserInformation = {
+  id: string;
   userName: string;
+}
+
+export type UserState = UserInformation & {
+  friends: UserInformation[];
 };
 
 export default {
@@ -8,10 +13,8 @@ export default {
     userName: '',
   },
   reducers: {
-    save: (state: UserState, { payload }: { payload: string }) => {
-      console.log(payload);
-      
-      return { ...state, userName: payload };
+    save: (state: UserState, { payload }: { payload: UserState }) => {
+      return { ...state, ...payload };
     },
   },
 };

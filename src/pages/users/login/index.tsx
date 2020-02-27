@@ -27,10 +27,10 @@ class NormalLoginForm extends React.Component<INormalLoginFormProps> {
           .then((response: Response) => {
             return response.json();
           })
-          .then(json => {
+          .then((userState: UserState) => {
             this.props.dispatch({
               type: 'users/save',
-              payload: json.userName,
+              payload: userState,
             });
             router.push('/users');
           });
