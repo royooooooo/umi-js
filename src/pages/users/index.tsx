@@ -1,12 +1,13 @@
 import React from 'react';
-import FormNormalLogin from './FormNormalLogin';
+import { UserState } from '@/models/user-info';
+import { connect } from 'dva';
 
-const index = () => {
-  return (
-    <div>
-      <FormNormalLogin />
-    </div>
-  );
+const WelcomePage = ({ userName }: { userName: string }) => {
+  return <div>hello user:{userName}</div>;
 };
 
-export default index;
+const mapStateToProps = ({ users }: { users: UserState }) => ({
+  userName: users?.userName,
+});
+
+export default connect(mapStateToProps)(WelcomePage);
