@@ -10,7 +10,9 @@ export type UserState = UserInformation & {
 export default {
   namespace: 'users',
   state: {
+    id: '',
     userName: '',
+    friends: [],
   },
   reducers: {
     save: (state: UserState, { payload }: { payload: UserState }) => {
