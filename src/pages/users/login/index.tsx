@@ -1,10 +1,7 @@
+import { Button, Checkbox, Form, Icon, Input } from 'antd';
+import { connect, Dispatch } from 'dva';
 import React, { FormEvent } from 'react';
 import styles from './index.less';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { connect, Dispatch } from 'dva';
-import { UserState } from '@/models/user-info';
-import { render } from 'react-dom';
-import { router } from 'umi';
 
 interface INormalLoginFormProps {
   form: any;
@@ -12,28 +9,14 @@ interface INormalLoginFormProps {
 }
 
 class NormalLoginForm extends React.Component<INormalLoginFormProps> {
-  login = (userName: string, password: string) => {
-    return fetch('http://localhost:8000/api/users', {
-      method: 'post',
-      body: JSON.stringify({ userName, password }),
-    });
-  };
-
   handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.props.form.validateFields((err: any, values: any) => {
       if (!err) {
-        this.login(values.username, values.password)
-          .then((response: Response) => {
-            return response.json();
-          })
-          .then((userState: UserState) => {
-            this.props.dispatch({
-              type: 'users/save',
-              payload: userState,
-            });
-            router.push('/users');
-          });
+        this.props.dispatch({
+          type: 'users/login',
+          payload: values,
+        });
       }
     });
   };

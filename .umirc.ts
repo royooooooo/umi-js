@@ -25,7 +25,7 @@ const config: IConfig = {
         dva: {
           immer: true
         },
-        dynamicImport: false,
+        dynamicImport: true,
         title: 'umi-js',
         dll: false,
 
